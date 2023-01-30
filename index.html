@@ -18,11 +18,15 @@
 			</div>
 			<div class="inpContainer" id="inpContainer">
 				<div class="submitinp">
-					<input type="text" id="data" />
+					<input type="text" id="data" onkeypress="checkError()" />
 					<button type="submit" onclick="getPlace()">submit</button>
 				</div>
 
-				<button type="submit" class="getLocation" onclick="getLocation()">
+				<button
+					type="submit"
+					class="getLocation"
+					onclick="getLocation()"
+				>
 					Get Location
 				</button>
 			</div>
@@ -99,7 +103,8 @@
 				</div>
 				<button onclick="getLocation()">Your Location</button>
 			</div>
-			<p class="text" id="text">Loading......</p>
+			<p class="text" id="text">Loading.....</p>
+			<p class="text" id="error">Add any word.....</p>
 		</div>
 	</body>
 </html>
