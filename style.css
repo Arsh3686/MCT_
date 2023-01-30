@@ -36,7 +36,12 @@ body::before {
 	-webkit-transition: all 2s linear;
 	-o-transition: all 2s linear;
 }
+.error {
+	display: none;
+}
 .text {
+	/* position: absolute; */
+
 	display: none;
 }
 .text1 {
@@ -47,9 +52,6 @@ body::before {
 	height: 30px;
 	display: flex;
 	align-items: center;
-}
-.getLocation{
-	margin:3px 0;
 }
 .arrow {
 	margin-left: 6px;
@@ -128,9 +130,13 @@ body::before {
 .demoLocation {
 	margin: 4px 0;
 }
+.getLocation {
+	margin: 4px 0;
+}
 button {
 	border: 0;
 	padding: 6px;
+	margin: 2px 0;
 	border-radius: 5px;
 	color: white;
 	background-color: #235dc8;
