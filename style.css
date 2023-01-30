@@ -36,6 +36,14 @@ body::before {
 	-webkit-transition: all 2s linear;
 	-o-transition: all 2s linear;
 }
+.text {
+	/* position: absolute; */
+
+	display: none;
+}
+.text1 {
+	margin-top: 2px;
+}
 .location {
 	cursor: pointer;
 	height: 30px;
