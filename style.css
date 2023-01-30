@@ -37,8 +37,6 @@ body::before {
 	-o-transition: all 2s linear;
 }
 .text {
-	/* position: absolute; */
-
 	display: none;
 }
 .text1 {
