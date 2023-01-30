@@ -18,20 +18,36 @@ const getLocation = () => {
 	navigator.geolocation.getCurrentPosition((position) => {
 		const p = position.coords;
 		console.log(p.latitude, p.longitude);
+		document.getElementById("error").style.display = "none";
 		document.getElementById("text").style.display = "block";
 		document.getElementById("text1").style.display = "block";
 		fetchs(p.latitude, p.longitude);
 	});
 };
+const checkError = () => {
+	let place = document.getElementById("data");
+	if (place.value.length > 0) {
+		document.getElementById("data").style.borderColor = "#fff";
+	}
+};
 const getPlace = () => {
-	let place = document.getElementById("data").value;
-	submit(place);
-	document.getElementById("text").style.display = "block";
-	document.getElementById("text1").style.display = "block";
+	let place = document.getElementById("data");
+	if (place.value !== "") {
+		// document.getElementById("text").style.display = "block";
+		submit(place.value);
+
+		document.getElementById("text1").style.display = "block";
+		document.getElementById("error").style.display = "none";
+	} else {
+		document.getElementById("data").style.borderColor = "red";
+		document.getElementById("error").style.display = "block";
+	}
 };
 const submit = (place) => {
+	document.getElementById("error").style.display = "none";
 	document.getElementById("text").style.display = "block";
 	document.getElementById("text1").style.display = "block";
+
 	fetch(
 		`https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=af2a18278da49fb79e179e964c835a64`
 	)
@@ -141,5 +157,9 @@ const fetchs = (lat, lon) => {
 };
 function demo() {
 	let place = document.getElementById("demoInput");
-	submit(place.value);
+	if (place.value !== "") {
+		submit(place.value);
+	} else {
+		document.getElementById("error").style.display = "block";
+	}
 }
