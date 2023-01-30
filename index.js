@@ -18,14 +18,20 @@ const getLocation = () => {
 	navigator.geolocation.getCurrentPosition((position) => {
 		const p = position.coords;
 		console.log(p.latitude, p.longitude);
+		document.getElementById("text").style.display = "block";
+		document.getElementById("text1").style.display = "block";
 		fetchs(p.latitude, p.longitude);
 	});
 };
 const getPlace = () => {
 	let place = document.getElementById("data").value;
 	submit(place);
+	document.getElementById("text").style.display = "block";
+	document.getElementById("text1").style.display = "block";
 };
 const submit = (place) => {
+	document.getElementById("text").style.display = "block";
+	document.getElementById("text1").style.display = "block";
 	fetch(
 		`https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=af2a18278da49fb79e179e964c835a64`
 	)
@@ -36,9 +42,6 @@ const submit = (place) => {
 		.catch((err) => console.error(err));
 };
 const fetchs = (lat, lon) => {
-	// fetch(
-	// 	`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=af2a18278da49fb79e179e964c835a64`
-	// )
 	fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=af2a18278da49fb79e179e964c835a64`
 	)
@@ -49,9 +52,13 @@ const fetchs = (lat, lon) => {
 			document.getElementById("inpContainer").style.display = "none";
 			document.getElementById("arrow").innerText = "v";
 			isClicked = 0;
+			document.getElementById("text").style.display = "none";
+			document.getElementById("text1").style.display = "none";
 			console.log(res);
 			let place = document.getElementById("data");
 			place.value = "";
+			let demoPlace = document.getElementById("demoInput");
+			demoPlace.value = "";
 
 			let temp = res.list[0].main.temp - 273;
 			document.getElementById("todaydeg").innerText = `${temp.toFixed(
@@ -135,6 +142,4 @@ const fetchs = (lat, lon) => {
 function demo() {
 	let place = document.getElementById("demoInput");
 	submit(place.value);
-	place.value = "";
 }
-setTimeout(() => {}, 2000);
